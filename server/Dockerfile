@@ -1,19 +1,21 @@
-FROM dailyco/pipecat-base:latest
+FROM python:3.12-slim
 
-# Enable bytecode compilation
-ENV UV_COMPILE_BYTECODE=1
+# uv for installing from your lockfile
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Copy from the cache instead of linking since it's a mounted volume
-ENV UV_LINK_MODE=copy
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy \
+    PYTHONUNBUFFERED=1
 
-# Uncomment if you wish to print a summary of the features available in the base image
-# ENV PCC_LOG_FEATURES_SUMMARY=true
+WORKDIR /app
 
-# Install the project's dependencies using the lockfile and settings
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+# install dependencies first (cached unless they change)
+COPY pyproject.toml uv.lock ./
+RUN uv sync --locked --no-install-project --no-dev
 
-# Copy the application code
-COPY ./bot.py bot.py
+# copy the whole server folder (bot.py, interview_flow.py, ...)
+COPY . .
+
+ENV PATH="/app/.venv/bin:$PATH"
+
+CMD ["sh", "-c", "python bot.py -t websocket --host 0.0.0.0 --port ${PORT:-10000}"]

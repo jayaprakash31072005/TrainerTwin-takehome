@@ -1,0 +1,23 @@
+# secrets
+.env
+.env.*
+
+# local environments and caches
+.venv
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# version control and editor files
+.git
+.gitignore
+.vscode/
+.idea/
+
+# not needed in the image
+Dockerfile
+.dockerignore
+README.md
+*.log

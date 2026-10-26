@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrainerTwin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="app">
+      <header class="top">
+        <div>
+          <h1>TrainerTwin</h1>
+          <p class="sub">Mock interview practice</p>
+        </div>
+        <span id="status" class="pill" data-state="idle" role="status">Ready</span>
+      </header>
+
+      <section id="stage" class="stage" data-speaker="idle" aria-hidden="true">
+        <div id="wave" class="wave"></div>
+      </section>
+
+      <section id="chat" class="chat" aria-live="polite" aria-label="Conversation">
+        <p id="empty" class="empty">
+          Press Start interview, allow the microphone, and answer out loud.
+          Your conversation will appear here.
+        </p>
+      </section>
+
+      <footer class="controls">
+        <button id="toggle" class="btn" data-mode="start" type="button">Start interview</button>
+        <p class="hint">Use headphones. Without them the bot can hear itself through your speakers.</p>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
