@@ -1,0 +1,3 @@
+{"turn": 1, "user_stopped_ms": 12400, "stt_final_ms": 12580, "llm_first_token_ms": 13120, "tts_first_audio_ms": 14250, "interrupted": false}
+{"turn": 2, "user_stopped_ms": 45800, "stt_final_ms": 46010, "llm_first_token_ms": 46600, "tts_first_audio_ms": 47920, "interrupted": false}
+{"turn": 3, "user_stopped_ms": 91200, "stt_final_ms": 91450, "llm_first_token_ms": 92100, "tts_first_audio_ms": 93300, "interrupted": true}

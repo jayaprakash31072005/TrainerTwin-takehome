@@ -1,0 +1,6 @@
+ASSISTANT: Hi, I'm your AI interview trainer. We'll do a short practice interview with four questions...
+USER: I built a payments dashboard for our support team.
+ASSISTANT: What part of that project are you most proud of?
+USER: I worked on… um… the retry logic when the bank API timed out.
+ASSISTANT: What was the hardest technical problem in it? [INTERRUPTED]
+SYSTEM: [user interrupted bot]
